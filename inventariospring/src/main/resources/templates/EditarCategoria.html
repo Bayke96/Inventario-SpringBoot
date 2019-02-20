@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link rel="shortcut icon" type="image/png" href="/images/inventory-icon.png"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet"> 
+<link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<meta th:name = "_csrf" th:content = "${_csrf.token}" />
+<meta th:name = "_csrf_header" th:content = "${_csrf.headerName}" />
+
+<link href = "/css/estilo.css" rel = "stylesheet" />
+<script type = "text/javascript" src = "/scripts/CategoriasAJAX.js"></script>
+
+<title>Sistema de Inventario - Editar Categoria</title>
+
+<script type = "text/javascript">
+
+	function CambiarContraseña() {
+		window.location.href = "/usuario/cambiarcontraseña";
+	}
+	
+	function Inventario() {
+		window.location.href = "/productos/1";
+	}
+	
+	function Borrar() {
+		document.getElementById("validaciones").style.display = "none";
+	}
+	function logOut() {
+		document.getElementById("forma-salir").submit();
+	}
+</script>
+
+</head>
+<body>
+
+<div id = "page-header" class = "jumbotron">
+   <div class = "container">
+      <h1 id = "header-title">Sistema de Inventario</h1>
+      <p id = "header-subtitle">Realizado con Spring Boot, Spring MVC, Bootstrap e Hibernate</p>
+      <form id = "forma-salir" th:action="@{/salir}" method="POST">
+		<button onclick = "logOut();">Salir</button>
+	  </form>
+      <button onclick = "CambiarContraseña();">Cambiar contraseña</button>
+      
+      <button onclick = "Inventario();">Inventario</button>
+   </div>
+</div>
+
+<div class = "form-body">
+
+<form th:action="@{|/inventario/categoria/${id}|}" id = "forma-editar-categoria" th:object = "${actualizarCategoria}" 
+		method = "POST" autocomplete = "off">
+		
+	<table class = "tabla-form" id = "tabla-registrar-usuario">
+		<tr>
+			<td colspan = "2">
+				<img id = "add-category-icon" src = "/images/add-category-icon.png" />
+				<p>Editar categoría</p>
+				<h5 id = "validaciones" class = "texto-errores">Errores:</h5>
+			</td>
+		</tr>
+		<tr>
+			<td><span>Seleccionar categoría</span></td>
+			<td>
+				<select id = "seleccionCategoria">
+					<option value = "0" selected>Seleccionar</option>
+					<option th:each="categoria : ${listaCategorias}"
+                            th:value="${categoria[0]}"
+                            th:text="${#strings.capitalizeWords(categoria[1])}" />
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><span>Nuevo nombre</span></td>
+			<td><input id = "nuevoNombreCategoria" type = "text" th:field = "*{nombreCategoria}" /></td>
+		</tr>
+		<tr>
+			<td colspan = "2">
+				<input type = "button" class = "form-button" value = "Editar" onclick = "return validarModificacion();" />
+				<input type = "reset" class = "form-button" value = "Borrar" onclick = "Borrar();">	<br /><br />
+				<input id = "boton-regresar" type = "button" class = "form-button" value = "Regresar" onclick = "Inventario();"/>
+			</td>
+		</tr>
+	</table>
+</form>
+
+</div>
+
+</body>
+</html>

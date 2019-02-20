@@ -1,0 +1,403 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: white;
+	padding: 0;
+	margin: 0;
+}
+
+.texto-errores {
+	color: red;
+	font-weight: bold;
+	display: none;
+}
+
+p {
+	color: darkgrey;
+	font-size: 1em;
+	text-align: center;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
+#page-header {
+	background-color: #048A0B;
+	padding: 2.5%;
+	padding-bottom: 1.2%;
+}
+
+#page-header button {
+	background-color: transparent;
+	color: white;
+	font-weight: bold;
+	float: right;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-color: white;
+	border-bottom-style: solid;
+	border-bottom-width: 0.3em;
+	padding-bottom: 4px;
+	margin-top: 1%;
+	margin-left: 1.5em;
+	font-size: 1em;
+}
+
+#header-title{
+	margin-top: 0;
+	text-align: right;
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 3em;
+}
+
+#header-subtitle {
+	text-align: right;
+	margin-right: 5%;
+	color: #CED2B8;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 1.5em;
+	margin-bottom: 0;
+}
+
+.form-body {
+	margin-top: 4%;
+	text-align: center;
+}
+
+.form-body p {
+	letter-spacing: 0.2em;
+	font-size: 1.3em;
+	color: #656368;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+}
+
+.tabla-form { 
+	text-align: center;
+	margin: auto;
+	table-layout: fixed;
+}
+
+.tabla-form td { 
+	width: 50%;
+	padding-top: 11%;
+}
+
+.tabla-form td:first-child { 
+	width: 20%;
+}
+
+#login-title {
+	margin-top: -10%;
+}
+
+.tabla-form img { 
+	height: 4.5em;
+	width: 4.5em;
+	margin: 0;
+	padding: 0;
+	margin-top: -10%;
+}
+
+input[type="text"] {
+	background-color: transparent;
+	color: green;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-color: #CED2B8;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+input[type="password"] {
+	background-color: transparent;
+	color: green;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-color: #CED2B8;
+	font-weight: bold;
+	text-align: center;
+}
+
+.form-button {
+	background-color: transparent;
+	border-style: solid;
+	color: green;
+	font-weight: bold;
+	border-radius: 2px;
+	border-color: green;
+	font-size: 1em;
+	padding: 0.3em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	transition-duration: 350ms;
+}
+
+.form-button:hover {
+	background-color: green;
+	color: white;
+	border-color: green;
+}
+
+#link-registrar {
+	margin-top: 5%;
+	color: green;
+	cursor: pointer;
+}
+
+#link-registrar:hover {
+	text-decoration: underline;
+}
+
+#tabla-registrar-usuario td { 
+	width: 50%;
+	padding-top: 10%;
+}
+
+#tabla-registrar-usuario span {
+	color: green;
+}
+
+#add-item-icon { 
+	margin-top: -35%;
+}
+
+#add-category-icon { 
+	margin-top: -25%;
+}
+
+#inventario-body {
+	width: 100%;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+#inventario-cuadro-cuerpo {
+	background-color: red;
+	width: 49.5%;
+	display: inline;
+}
+
+#inventario-body h4 {
+	text-align: left;
+	margin-left: 8em;
+	color: black;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+#tabla-inventario {
+	border-color: #c0c0c0;
+	margin-left: auto;
+	margin-right: auto;
+    margin-top: -14em;
+    width: 55%;
+}
+
+#tabla-inventario td {
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+	border-color: #c0c0c0;
+	padding: 0.3em;
+	padding-left: 1em;
+	padding-right: 1em;
+	color: black;
+}
+
+#inventario-menu {
+	text-align: right;
+	background-color: blue;
+	display: inline;
+}
+
+#inventario-menu img {
+	height: 2em;
+	width: 2em;
+}
+
+#product-menu-icon {
+	width: 2.5em !important;
+	height: 2.5em !important;
+}
+
+#inventario-menu h5 {
+	font-weight: bold;
+	padding-right: 4em;
+	color: grey;
+}
+
+#inventario-menu ul {
+	margin-right: 5em;
+}
+
+#inventario-menu li {
+	font-family: 'Roboto', sans-serif;
+	color: green;
+	width: 9.5em;
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+#inventario-menu li:hover {
+	color: red;
+	cursor: pointer;
+}
+
+#boton-regresar{
+	margin-bottom: 0.8em;
+}
+
+.modal-header {
+	background-color: green;
+	color: white;
+}
+
+.modal-title {
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+}
+
+#tabla-categorias {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+	border-color: #c0c0c0;
+	width: 30%;
+}
+
+#tabla-categorias td {
+	border-color: #c0c0c0;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding: 0.2em;
+}
+
+#pagination-div {
+	margin-left: 30%;
+}
+
+.pagination {
+	padding: 0 !important;
+	margin: 0 !important;
+	margin-top: 1em !important;
+}
+
+.pagination a {
+	border-radius: 0px !important;
+}
+
+.pagination li {
+	background-color: green !important;
+}
+
+.pagination > li.active > a {
+  background: green !important;
+  color: white !important;
+  border-color: white;
+}
+
+.pagination a {
+	font-weight: bold;
+	color: green !important;
+	background-color: white !important;
+}
+
+#error-page-header {
+	background-color: #333399;
+	color: black;
+}
+
+#login-error-div {
+	text-align: center;
+}
+
+#login-error-div img {
+	width: 16em;
+	height: 16em;
+}
+
+#login-error-div p {
+	color: black;
+	font-family: 'Roboto Condensed', sans-serif;
+	letter-spacing: 0.1em;
+}
+
+#login-error-div button {
+	margin-top: 1em;
+	background-color: white;
+	border-color: #333399;
+	color: #333399;
+	border-radius: 5px;
+	font-weight: bold;
+	padding: 0.2em;
+	width: 8em;
+	transition-duration: 550ms;
+	margin-bottom: 1em;
+}
+
+#login-error-div button:hover {
+	background-color: #333399;
+	border-color: #333399;
+	color: white;
+}
+
+#inventario-nombre-usuario {
+	color: white;
+	text-align: left;
+	font-size: 1.1em;
+	margin-right: 5em;
+}
+
+@media screen and (max-width: 420px) {
+	
+	#header-subtitle {
+		margin-top: 1em;
+		margin-bottom: 0.8em;
+	}
+
+	#page-header button {
+  		border-bottom-style: none;
+	}
+	
+	#add-item-icon { 
+	margin-top: -31%;
+	}
+	
+	#inventario-body h4 {
+		margin-bottom: 1em;
+	}
+	
+	#tabla-inventario {
+		margin-top: 4em;
+		width: 10%;
+		font-size: 80%;
+		padding: 0;
+		margin-bottom: 1em;
+	}
+	
+	#tabla-inventario td {
+		padding: 1em;
+		margin: 0;
+	}
+	
+	#add-category-icon { 
+	margin-top: -20%;
+	}
+	
+	input[type="text"]{
+		width: 9em;
+	}
+	
+	input[type="password"]{
+		width: 9em;
+	}
+	
+}

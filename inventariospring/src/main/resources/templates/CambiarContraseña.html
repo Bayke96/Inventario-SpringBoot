@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" type="image/png" href="/images/inventory-icon.png"/>
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet"> 
+<link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<meta th:name = "_csrf" th:content = "${_csrf.token}" />
+<meta th:name = "_csrf_header" th:content = "${_csrf.headerName}" />
+
+<link href = "/css/estilo.css" rel = "stylesheet" />
+<script type = "text/javascript" src = "/scripts/ValidacionesUsuario.js"></script>
+
+<title>Sistema de Inventario - Cambiar Contraseña</title>
+
+<script type = "text/javascript">
+	function CambiarContraseña() {
+		window.location.href = "/usuario/cambiarcontraseña";
+	}
+	function Inventario() {
+		window.location.href = "/productos/1";
+	}
+	function logOut() {
+		document.getElementById("forma-salir").submit();
+	}
+	function Borrar() {
+		document.getElementById("validaciones").style.display = "none";
+	}
+</script>
+
+</head>
+<body>
+
+<div id = "page-header" class = "jumbotron">
+   <div class = "container">
+      <h1 id = "header-title">Sistema de Inventario</h1>
+      <p id = "header-subtitle">Realizado con Spring Boot, Spring MVC, Bootstrap e Hibernate</p>
+      <form id = "forma-salir" th:action="@{/salir}" method="POST">
+		<button onclick = "logOut();">Salir</button>
+	  </form>
+      <button onclick = "CambiarContraseña();">Cambiar contraseña</button>
+      
+      <button onclick = "Inventario();">Inventario</button>
+   </div>
+</div>
+
+<div class = "form-body">
+
+<form th:action="@{|/usuario/cambiarcontraseña|}" id = "forma-cambiar-contraseña" th:object = "${usuario}" 
+		method = "POST" autocomplete = "off">
+		
+	<table class = "tabla-form" id = "tabla-registrar-usuario">
+		<tr>
+			<td colspan = "2">
+				<p id = "login-title">Actualizar contraseña</p>
+				<h5 id = "validaciones" class = "texto-errores">Errores:</h5>
+			</td>
+			
+		</tr>
+		<tr>
+			<td><span>Vieja contraseña</span></td>
+			<td><input id = "viejaContraseña" type = "password" name = "viejaContraseña" /></td>
+		</tr>
+		<tr>
+			<td><span>Nueva contraseña</span></td>
+			<td><input id = "nuevaContraseña" type = "password" th:field = "*{contraseña}" /></td>
+		</tr>
+		<tr>
+			<td><span>Repetir contraseña</span></td>
+			<td><input id = "repetirContraseña" type = "password" /></td>
+		</tr>
+		<tr>
+			<td colspan = "2">
+				<input type = "submit" class = "form-button" value = "Actualizar" onclick = "return validarContraseñas();" />
+				<input type = "reset" class = "form-button" value = "Borrar" onclick = "Borrar();">	<br />
+			</td>
+		</tr>
+	</table>
+</form>
+
+</div>
+
+</body>
+</html>

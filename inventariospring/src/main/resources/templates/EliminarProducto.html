@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link rel="shortcut icon" type="image/png" href="/images/inventory-icon.png"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet"> 
+<link href = "/css/estilo.css" rel = "stylesheet" />
+<link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<meta th:name = "_csrf" th:content = "${_csrf.token}" />
+<meta th:name = "_csrf_header" th:content = "${_csrf.headerName}" />
+
+<link href = "/css/estilo.css" rel = "stylesheet" />
+<script type = "text/javascript" src = "/scripts/ProductosAJAX.js"></script>
+
+<title>Sistema de Inventario - Eliminar Producto</title>
+
+<script type = "text/javascript">
+
+	function CambiarContraseña() {
+		window.location.href = "/usuario/cambiarcontraseña";
+	}
+	
+	function Inventario() {
+		window.location.href = "/productos/1";
+	}
+	
+	function logOut() {
+		document.getElementById("forma-salir").submit();
+	}
+	
+	function Borrar() {
+		document.getElementById("validaciones").style.display = "none";
+		var nuevaLista = document.getElementById("nuevaCategoria");
+		
+		var i;
+        for(i = nuevaLista.options.length - 1 ; i > 0 ; i--)
+        {
+        	nuevaLista.remove(i);
+        }
+	}
+</script>
+
+</head>
+<body>
+
+<div id = "page-header" class = "jumbotron">
+   <div class = "container">
+      <h1 id = "header-title">Sistema de Inventario</h1>
+      <p id = "header-subtitle">Realizado con Spring Boot, Spring MVC, Bootstrap e Hibernate</p>
+      <form id = "forma-salir" th:action="@{/salir}" method="POST">
+		<button onclick = "logOut();">Salir</button>
+	  </form>
+      <button onclick = "CambiarContraseña();">Cambiar contraseña</button>
+      
+      <button onclick = "Inventario();">Inventario</button>
+   </div>
+</div>
+
+<div class = "form-body">
+
+<form th:action="@{|/inventario/producto|}" id = "forma-editar-producto" th:object = "${eliminarProducto}" 
+		method = "POST" autocomplete = "off">
+		
+	<table class = "tabla-form" id = "tabla-registrar-usuario">
+		<tr>
+			<td colspan = "2">
+				<img id = "add-item-icon" src = "/images/add-item-icon.png" />
+				<p id = "login-title">Eliminar producto</p>
+				<h5 id = "validaciones" class = "texto-errores">Errores:</h5>
+			</td>
+		</tr>
+		<tr>
+			<td><span>Categoría</span></td>
+			<td>
+				<select id = "viejaCategoria" onchange = "buscarProducto();" required = "required" >
+					<option value = "0" selected>Seleccionar</option>
+					<option th:each="categoria : ${listaCategorias}"
+                            th:value="${categoria[0]}"
+                            th:text="${#strings.capitalizeWords(categoria[1])}" />
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><span>Producto</span></td>
+			<td>
+				<select id = "nuevaCategoria">
+					<option value = "0">Seleccionar</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan = "2">
+				<input type = "submit" class = "form-button" value = "Eliminar" onclick = "return validarEliminacion();"/>
+				<input type = "reset" class = "form-button" value = "Resetear" onclick = "Borrar();">	<br /><br />
+				<input id = "boton-regresar" type = "button" class = "form-button" value = "Regresar" onclick = "Inventario();"/>
+			</td>
+		</tr>
+	</table>
+</form>
+
+</div>
+
+</body>
+</html>
