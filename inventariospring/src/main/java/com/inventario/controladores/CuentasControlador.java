@@ -25,8 +25,6 @@ import com.inventario.modelos.Cuentas;
 @Controller
 public class CuentasControlador {
 	
-
-	
 	CuentasAPI api = new CuentasAPI();
 	ServicioCuentas servicio = new ServicioCuentas();
 	

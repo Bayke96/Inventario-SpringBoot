@@ -24,19 +24,14 @@
 
 <script type = "text/javascript">
 
-	function CambiarContraseña() {
-		window.location.href = "/usuario/cambiarcontraseña";
-	}
-	
-	function Inventario() {
-		window.location.href = "/productos/1";
-	}
-	
 	function Borrar() {
 		document.getElementById("validaciones").style.display = "none";
 	}
 	function logOut() {
 		document.getElementById("forma-salir").submit();
+	}
+	function Inventario() {
+		window.location.href = "/productos/1";
 	}
 </script>
 
@@ -50,9 +45,12 @@
       <form id = "forma-salir" th:action="@{/salir}" method="POST">
 		<button onclick = "logOut();">Salir</button>
 	  </form>
-      <button onclick = "CambiarContraseña();">Cambiar contraseña</button>
-      
-      <button onclick = "Inventario();">Inventario</button>
+      <a href = "/usuario/cambiarcontraseña">
+      	<button>Cambiar contraseña</button>
+      </a>
+      <a href = "/productos/1">
+      	<button>Inventario</button>
+      </a>
    </div>
 </div>
 

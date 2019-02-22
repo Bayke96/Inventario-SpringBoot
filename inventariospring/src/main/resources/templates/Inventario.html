@@ -19,10 +19,6 @@
 <title>Sistema de Inventario - Inventario</title>
 
 <script type = "text/javascript">
-	function CambiarContraseña() {
-		window.location.href = "/usuario/cambiarcontraseña";
-	}
-	
 	function crearCategoria(){
 		window.location.href = "/categoria/crear";
 	}
@@ -46,11 +42,7 @@
 	function eliminarProducto(){
 		window.location.href = "/producto/eliminar";
 	}
-	
-	function Inventario() {
-		window.location.href = "/productos/1"
-	}
-	
+
 	function logOut() {
 		document.getElementById("forma-salir").submit();
 	}
@@ -67,9 +59,12 @@
       <form id = "forma-salir" th:action="@{/salir}" method="POST">
 		<button onclick = "logOut();">Salir</button>
 	  </form>
-      <button onclick = "CambiarContraseña();">Cambiar contraseña</button>
-      
-      <button onclick = "Inventario();">Inventario</button>
+      <a href = "/usuario/cambiarcontraseña">
+      	<button>Cambiar contraseña</button>
+      </a>
+      <a href = "/productos/1">
+      	<button>Inventario</button>
+      </a>
       <p id = "inventario-nombre-usuario" th:text = "Usuario + ': ' +  ${nombreUsuario}"></p>
    </div>
 </div>

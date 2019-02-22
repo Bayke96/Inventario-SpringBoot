@@ -23,9 +23,6 @@
 <title>Sistema de Inventario - Ingreso al Sistema</title>
 
 <script type = "text/javascript">
-	function Registrar() {
-		window.location.href = "/registrarse";
-	}
 	function Borrar() {
 		document.getElementById("validaciones").style.display = "none";
 	}
@@ -74,7 +71,7 @@
 			<td colspan = "2">
 				<input type = "submit" class = "form-button" value = "Ingresar" onclick = "return ingresarUsuario();" />
 				<input type = "reset" class = "form-button" value = "Borrar" onclick = "Borrar();">	<br />
-				<h5 id = "link-registrar" onclick = "return Registrar();">Registrar una <b style = "color: green;">cuenta</b></h5>
+				<a id = "link-registrar" href = "/registrarse">Registrar una <b style = "color: green;">cuenta</b></a>
 			</td>
 		</tr>
 	</table>

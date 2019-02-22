@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
@@ -121,7 +122,8 @@ public class ServicioCuentas {
 	}
 		
 	public void agregarUsuario(Cuentas usuario) {
-		 Session session = factory.openSession();
+
+		Session session = factory.openSession();
 		 BCrypt encriptado = new BCrypt();
 	      Transaction tx = null;
 	      try {

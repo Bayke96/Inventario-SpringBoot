@@ -20,6 +20,10 @@ p {
 	font-family: 'Roboto', sans-serif;
 }
 
+a:focus, a:active, a:clicked, a:focus:active {
+	border-style: none;
+}
+
 #page-header {
 	background-color: #048A0B;
 	padding: 2.5%;
@@ -136,6 +140,7 @@ input[type="password"] {
 	padding-left: 1.5em;
 	padding-right: 1.5em;
 	transition-duration: 350ms;
+	margin-bottom: 1em;
 }
 
 .form-button:hover {

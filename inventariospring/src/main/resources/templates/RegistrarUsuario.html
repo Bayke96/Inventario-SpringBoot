@@ -23,11 +23,11 @@
 <title>Sistema de Inventario - Registro de Usuario</title>
 
 <script type = "text/javascript">
-	function Login() {
-		window.location.href = "/login";
-	}
 	function Borrar() {
 		document.getElementById("validaciones").style.display = "none";
+	}
+	function Login() {
+		window.location.href = "/login";
 	}
 </script>
 
@@ -38,7 +38,9 @@
    <div class = "container">
       <h1 id = "header-title">Sistema de Inventario</h1>
       <p id = "header-subtitle">Realizado con Spring Boot, Spring MVC, Bootstrap e Hibernate</p>
-      <button onclick = "return Login();">Login</button>
+      <a href = "/login">
+      	<button>Login</button>
+      </a>
    </div>
 </div>
 
