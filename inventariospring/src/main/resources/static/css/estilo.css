@@ -361,6 +361,10 @@ input[type="password"] {
 	margin-right: 5em;
 }
 
+#imagen-404 {
+	margin-bottom: 2em;
+}
+
 @media screen and (max-width: 420px) {
 	
 	#header-subtitle {
