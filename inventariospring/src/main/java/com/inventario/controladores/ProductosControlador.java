@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.inventario.API.controladores.CategoriasAPI;
+import com.inventario.API.controladores.ProductosAPI;
 import com.inventario.modelos.Productos;
 
 @Controller

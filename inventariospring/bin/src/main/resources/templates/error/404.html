@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link rel="shortcut icon" type="image/png" href="/images/inventory-icon.png"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet"> 
+<link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      
+<link href = "/css/estilo.css" rel = "stylesheet" />      
+
+<title>404 - Pagina no encontrada</title>
+
+<script type = "text/javascript">
+	function regresar() {
+		window.location.href = "/productos/1";
+	}
+</script>
+
+</head>
+<body>
+
+<div id = "error-page-header" class = "jumbotron">
+   <div class = "container">
+      <h1 id = "header-title">ERROR 404 - PAGINA NO ENCONTRADA</h1>
+   </div>
+</div>
+
+<div class = "container" id = "login-error-div">
+	<img id = "imagen-404" src = "/images/error-404.png" />
+	<p>EL URL / PAGINA A LA QUE DESEA ACCEDER NO EXISTE</p>
+	<button onclick = "regresar();">Regresar</button>
+</div>
+
+</body>
+</html>

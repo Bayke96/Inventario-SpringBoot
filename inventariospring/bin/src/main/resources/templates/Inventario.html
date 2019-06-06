@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<link rel="shortcut icon" type="image/png" href="/images/inventory-icon.png"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Source+Sans+Pro" rel="stylesheet"> 
+<link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+      
+<link href = "/css/estilo.css" rel = "stylesheet" />
+
+<title>Sistema de Inventario - Inventario</title>
+
+<script type = "text/javascript">
+	function crearCategoria(){
+		window.location.href = "/categoria/crear";
+	}
+	
+	function editarCategoria(){
+		window.location.href = "/categoria/editar";
+	}
+	
+	function eliminarCategoria(){
+		window.location.href = "/categoria/eliminar";
+	}
+	
+	function agregarProducto(){
+		window.location.href = "/producto/crear";
+	}
+	
+	function editarProducto(){
+		window.location.href = "/producto/editar";
+	}
+	
+	function eliminarProducto(){
+		window.location.href = "/producto/eliminar";
+	}
+
+	function logOut() {
+		document.getElementById("forma-salir").submit();
+	}
+
+</script>
+
+</head>
+<body>
+
+<div id = "page-header" class = "jumbotron">
+   <div class = "container">
+      <h1 id = "header-title">Sistema de Inventario</h1>
+      <p id = "header-subtitle">Realizado con Spring Boot, Spring MVC, Bootstrap e Hibernate</p>
+      <form id = "forma-salir" th:action="@{/salir}" method="POST">
+		<button onclick = "logOut();">Salir</button>
+	  </form>
+      <a href = "/usuario/cambiarcontraseña">
+      	<button>Cambiar contraseña</button>
+      </a>
+      <a href = "/productos/1">
+      	<button>Inventario</button>
+      </a>
+      <p id = "inventario-nombre-usuario" th:text = "Usuario + ': ' +  ${nombreUsuario}"></p>
+   </div>
+</div>
+
+<div id = "inventario-body">
+
+	<h4>Inventario de Productos</h4>
+
+	<div id = "inventario-menu">
+	
+		<h5>
+			<img src = "/images/add-category-icon.png">
+			Categorías
+		</h5>
+		<ul>
+			<li onclick = "crearCategoria();">Crear categoría</li><br />
+			<li onclick = "editarCategoria();">Editar categoría</li><br />
+			<li onclick = "eliminarCategoria();">Eliminar categoría</li><br />
+			<li data-toggle = "modal" data-target = "#modalCategorias" >Visualizar categorías</li><br />
+		</ul>
+		<h5>
+			<img id = "product-menu-icon" src = "/images/add-item-icon.png">
+			Productos
+		</h5>
+		<ul>
+			<li onclick = "agregarProducto();">Agregar producto</li><br />
+			<li onclick = "editarProducto();">Editar producto</li><br />
+			<li onclick = "eliminarProducto();">Eliminar producto</li>
+		</ul>
+	</div>
+	
+	<table id = "tabla-inventario" border = "1">
+			<tr>
+				<td>Item N°</td>
+				<td>Categoría</td>
+				<td>Nombre</td>
+				<td>Unidades</td>
+			</tr>
+		<th:block th:each="producto : ${listaProductos}">
+    		<tr>
+    			<td th:text="${productoStat.index + 1}">ID</td>
+        		<td th:text="${#strings.capitalize(producto[2])}">Categoria</td>
+        		<td th:text="${#strings.capitalize(producto[0])}">Nombre</td>
+        		<td th:text="${producto[1]}">Unidades</td>
+    		</tr>
+		</th:block>
+	</table>
+	
+</div>
+
+
+	<div class="modal fade" id = "modalCategorias" role = "dialog" >
+    	<div class="modal-dialog">
+      <!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+          			<h4 class="modal-title">Lista de categorías</h4>
+        		</div>
+        		<div class="modal-body">
+          			<table id = "tabla-categorias" border = "1">
+          				<th:block th:each="categoria : ${listaCategorias}">
+    						<tr>
+    							<td th:text="${#strings.capitalize(categoria[1])}">Nombre-Categorias</td>
+    							<td th:text="${categoria[2]} + ' ' + unidades">Unidades-Categorias</td>
+    						</tr>
+						</th:block>
+          			</table>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+  	
+  	<div id = "pagination-div" class="text-center">
+  		 <ul class="pagination">
+  	 
+  	 		<th:block th:if = "${cantidadProductos} > 10 and ${cantidadProductos} % 10 == 0" th:each="i : *{#numbers.sequence( 1, cantidadProductos / 10)}">
+    			<li th:if = "${i} == ${paginaActual}" class = "active"><a href="#" th:text = "${i}" th:href = "@{'/productos/' + ${i}}">1</a></li>
+				<li th:if = "${i} != ${paginaActual}" ><a href="#" th:text = "${i}" th:href = "@{'/productos/' + ${i}}">1</a></li>
+			</th:block>
+  	 		
+  	 		<th:block th:if = "${cantidadProductos} > 10 and ${cantidadProductos} % 10 != 0" th:each="i : *{#numbers.sequence( 1, cantidadProductos / 10 + 1)}">
+    			<li th:if = "${i} == ${paginaActual}" class = "active"><a href="#" th:text = "${i}" th:href = "@{'/productos/' + ${i}}">1</a></li>
+				<li th:if = "${i} != ${paginaActual}" ><a href="#" th:text = "${i}" th:href = "@{'/productos/' + ${i}}">1</a></li>
+			</th:block>
+		
+		</ul> 
+  	</div>
+  	  	
+</body>
+</html>
